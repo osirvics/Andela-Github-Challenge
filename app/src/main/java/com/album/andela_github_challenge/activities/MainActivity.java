@@ -9,7 +9,6 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements PaginationAdapter
     });
 
 
-    private void populateGrid() {
+    private void populateList() {
         adapter = new UserAdapter(this, items, this,this, Glide.with(this));
         grid.setAdapter(adapter);
         int spacing =  getResources().getDimensionPixelSize(R.dimen.rc_padding_left);
@@ -141,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements PaginationAdapter
 
     private void displayData() {
         if (items != null) {
-            populateGrid();
+            populateList();
         } else {
             GithubApiService apiService =
                     GithubApiClient.getClient().create(GithubApiService.class);
@@ -149,20 +148,12 @@ public class MainActivity extends AppCompatActivity implements PaginationAdapter
             call.enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
-                    if(response.code()==400){
-                        Log.e("MainActivity", "Error in response: " + "400");
-                    }
-                    else if(response.code()==422){
-                        Log.e("MainActivity", "Error in response: " + "422");
-                    }
-
                     if(response.code()==200){
-
                             users =  new User();
                             users = response.body();
                         items =  new ArrayList<>();
                             items = users.getItems();
-                            populateGrid();
+                            populateList();
                         int totalCount = users.getTotal();
                         if(totalCount % PER_PAGE ==0)
                             TOTAL_PAGES = (totalCount/PER_PAGE);
