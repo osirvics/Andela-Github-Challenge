@@ -16,7 +16,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.album.andela_github_challenge.DividerItemDecoration;
-import com.album.andela_github_challenge.GridMarginDecoration;
 import com.album.andela_github_challenge.R;
 import com.album.andela_github_challenge.adapters.PaginationScrollListener;
 import com.album.andela_github_challenge.adapters.UserAdapter;
@@ -36,7 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements PaginationAdapterCallback, ClickListener {
-    private RecyclerView grid;
+    private RecyclerView list;
     private ProgressBar empty;
     private UserAdapter adapter;
     LinearLayout errorLayout;
@@ -76,17 +75,17 @@ public class MainActivity extends AppCompatActivity implements PaginationAdapter
 
 
     private void populateList() {
-        adapter = new UserAdapter(this, items, this,this, Glide.with(this));
-        grid.setAdapter(adapter);
+        adapter = new UserAdapter(this, items, Glide.with(this));
+        list.setAdapter(adapter);
         int spacing =  getResources().getDimensionPixelSize(R.dimen.rc_padding_left);
         RecyclerView.ItemDecoration dividerItemDecoration = new DividerItemDecoration(getApplicationContext(), spacing);
-        grid.addItemDecoration(dividerItemDecoration);
+        list.addItemDecoration(dividerItemDecoration);
         empty.setVisibility(View.GONE);
         if (currentPage <= TOTAL_PAGES) adapter.addLoadingFooter();
     }
 
     public void setupView(){
-        grid = (RecyclerView) findViewById(R.id.image_grid);
+        list = (RecyclerView) findViewById(R.id.image_grid);
         empty = (ProgressBar) findViewById(R.id.empty);
         errorLayout = (LinearLayout) findViewById(R.id.error_layout);
         btnRetry = (Button) findViewById(R.id.error_btn_retry);
@@ -95,10 +94,7 @@ public class MainActivity extends AppCompatActivity implements PaginationAdapter
         final GridLayoutManager gridLayoutManager =
                 new GridLayoutManager(this, columns);
         gridLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        grid.setLayoutManager(gridLayoutManager);
-
-        grid.addItemDecoration(new GridMarginDecoration(
-                getResources().getDimensionPixelSize(R.dimen.grid_item_spacing)));
+        list.setLayoutManager(gridLayoutManager);
         gridLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
@@ -115,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements PaginationAdapter
                 }
             }
         });
-        grid.addOnScrollListener(new PaginationScrollListener(gridLayoutManager) {
+        list.addOnScrollListener(new PaginationScrollListener(gridLayoutManager) {
             @Override
             protected void loadMoreItems() {
                 isLoading = true;

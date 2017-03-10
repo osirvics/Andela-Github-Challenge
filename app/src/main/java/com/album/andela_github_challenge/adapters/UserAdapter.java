@@ -41,12 +41,11 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private String errorMsg;
     private final RequestManager glide;
 
-    public UserAdapter(@NonNull Context context, @NonNull ArrayList<Item> users,
-                        PaginationAdapterCallback adapterCallback, ClickListener clickListener, RequestManager mGlide) {
+    public UserAdapter(@NonNull Context context, @NonNull ArrayList<Item> users, RequestManager mGlide) {
         this.users = users;
         this.context = context;
-        this.mCallback = adapterCallback;
-        this.clickListener = clickListener;
+        this.mCallback = (PaginationAdapterCallback) context;
+        this.clickListener = (ClickListener) context;
         this.glide = mGlide;
     }
 
