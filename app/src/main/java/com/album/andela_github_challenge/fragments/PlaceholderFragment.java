@@ -106,7 +106,7 @@ public  class PlaceholderFragment extends Fragment {
     private void displayImage(){
         Glide.with(this)
                 .load(avatar_url)
-                .placeholder(R.color.author_background)
+                .placeholder(R.color.user_background)
                 .centerCrop()
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)

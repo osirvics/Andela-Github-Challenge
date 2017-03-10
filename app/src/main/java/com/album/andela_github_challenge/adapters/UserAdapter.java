@@ -25,9 +25,6 @@ import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
 
-/**
- * Created by Victor on 3/7/2017.
- */
 
 public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<Item> users;
@@ -77,7 +74,7 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 Item user = users.get(position);
                 userHolder.username.setText(user.getLogin());
                 glide.load(user.getAvatarUrl())
-                        .placeholder(R.color.author_background)
+                        .placeholder(R.color.user_background)
                         .override(480,400)
                         .centerCrop()
                         .crossFade()

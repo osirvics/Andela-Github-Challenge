@@ -3,9 +3,6 @@ package com.album.andela_github_challenge.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by Victor on 3/7/2017.
- */
 
 public class GithubApiClient {
     public static final String GITHUB_API_BASE_URL = "https://api.github.com/";
