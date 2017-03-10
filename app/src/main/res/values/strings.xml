@@ -14,7 +14,7 @@
     <string name="error_header">Sorry! Couldn\'t fetch avatar</string>
 
 
-    <!-- Strings Relatred to detail page-->
+    <!-- Strings Related to detail page-->
     <string name="github_link">GITHUB</string>
     <string name="share_user">SHARE</string>
     <string name="share">share via</string>
