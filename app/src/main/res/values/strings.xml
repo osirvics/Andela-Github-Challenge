@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Andela-Github-Challenge</string>
+
+    <!-- Error Messages-->
+    <string name="error_msg">Sorry! Couldn\'t fetch developers :)</string>
+    <string name="btn_retry">RETRY</string>
+    <string name="error_msg_no_internet">No internet connection, Turn ON data or wifi</string>
+    <string name="error_msg_timeout">The server took too long to respond</string>
+    <string name="error_msg_unknown">An unexpected error occurred</string>
+    <string name="tap_to_reload">Tap to reload</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_collection_list">CollectionListActivity</string>
+    <string name="error_header">Sorry! Couldn\'t fetch avatar</string>
+
+
+    <!-- Strings Related to detail page-->
+    <string name="github_link">GITHUB</string>
+    <string name="share_user">SHARE</string>
+    <string name="share">share via</string>
+    <string name="share_msg"> Check out this awesome developer @%1$s, %2$s</string>
+
+
+
+
+
+</resources>
+
+
+
+
